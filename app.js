@@ -1,35 +1,22 @@
-import express from "express";
+const express = require("express");
+const mongoose = require("mongoose");
 
-import users from "./users.js";
+async function start() {
+  try {
+    const settingConnect = url;
+    await mongoose.connect(settingConnect, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false,
+    });
 
+    app.listen(PORT, () => {
+      console.log("Server has been started port: " + PORT);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
 
-const app = express();
-
-const PORT = 3000;
-
-app.listen(PORT, "localhost", (error) => {
-    error ? console.log(error) : console.log(`Listening port ${PORT}`);
-})
-
-app.get("/", (req, res) => {
-    res.send("Test text");
-})
-
-
-
-app.post('/', function (req, res) {
-    res.send('Got a POST request');
-});
-
-app.put('/:id', function (req, res) {
-    res.send('Got a PUT request');
-});
-
-app.delete('/:id', function (req, res) {
-    res.send('Got a DELETE request');
-});
-
-
-app.use(express.json());
-
-app.use("/users", users);
+start();
