@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const auth = require("./routes/authRouter");
+const passport = require("passport");
 
 const PORT = process.env.PORT || 3000;
 
@@ -10,9 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use("/auth", auth);
-app.get("/", (req, res) => {
-  res.send("Yes");
-});
+app.use(passport.initialize());
+require("./middleware/authJwtMiddleware")(passport);
 
 const start = async () => {
   try {
