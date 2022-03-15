@@ -16,12 +16,12 @@ class authController {
       const { username, email, password } = req.body;
       const candidate = await Users.findOne({ email });
       if (candidate) {
-        return res.json({ message: "Такой пользователь уже зарегистрирован" });
+        return res.json({ message: "This user is already registered" });
       }
       const hashPassword = bcrypt.hashSync(password, 10);
       const user = new Users({ username, email, password: hashPassword });
       await user.save();
-      return res.json({ message: "Пользователь успешно зарегистрирован" });
+      return res.json({ message: "User successfully registered" });
     } catch (e) {
       console.log(e);
       res.status(400).json({ message: "Registration error" });
