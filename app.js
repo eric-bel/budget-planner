@@ -1,35 +1,30 @@
-import express from "express";
+require("dotenv").config();
+const passport = require("passport");
+require("./middleware/authJwtMiddleware")(passport);
 
-import users from "./users.js";
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const auth = require("./routes/authRouter");
 
+const PORT = process.env.PORT;
 
 const app = express();
 
-const PORT = 3000;
-
-app.listen(PORT, "localhost", (error) => {
-    error ? console.log(error) : console.log(`Listening port ${PORT}`);
-})
-
-app.get("/", (req, res) => {
-    res.send("Test text");
-})
-
-
-
-app.post('/', function (req, res) {
-    res.send('Got a POST request');
-});
-
-app.put('/:id', function (req, res) {
-    res.send('Got a PUT request');
-});
-
-app.delete('/:id', function (req, res) {
-    res.send('Got a DELETE request');
-});
-
-
 app.use(express.json());
+app.use(cors());
+app.use("/auth", auth);
+app.use(passport.initialize());
 
-app.use("/users", users);
+const start = async () => {
+  try {
+    await mongoose.connect(process.env.DBURL);
+    app.listen(PORT, () => {
+      console.log(`Server started on http://localhost:${PORT}`);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};
+
+start();
