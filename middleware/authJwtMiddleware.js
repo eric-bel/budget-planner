@@ -13,12 +13,7 @@ module.exports = (passport) => {
       try {
         const Users = await mongoose.model("Users");
         const user = await Users.findOne({ userId: payload.userId });
-
-        if (user) {
-          done(null, user);
-        } else {
-          done(null, false);
-        }
+        done(null, user || false);
       } catch (e) {
         console.log(e);
       }
