@@ -10,7 +10,7 @@ const generateAccessToken = (id, email) => {
   return jwt.sign(payload, "Hello", { expiresIn: "1h" });
 };
 
-class authController {
+class AuthController {
   async registration(req, res) {
     try {
       const { username, email, password } = req.body;
@@ -47,4 +47,4 @@ class authController {
   }
 }
 
-module.exports = new authController();
+module.exports = new AuthController();
