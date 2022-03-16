@@ -1,6 +1,6 @@
 const Router = require("express");
 const controller = require("../controllers/authController");
-const passport = require("passport");
+// const passport = require("passport");
 
 const router = new Router();
 
