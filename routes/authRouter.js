@@ -7,7 +7,7 @@ const router = new Router();
 router.post("/registration", controller.registration);
 
 router.post(
-  "/user",
+  "/login",
   // passport.authenticate("jwt", { session: false }),
   controller.login
 );
