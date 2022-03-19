@@ -17,11 +17,22 @@ async function createUser(req, res) {
 
 async function updateUserData(req, res) {
   try {
-    const user = await User.findByIdAndUpdate(req.body._id, req.body, { new: true });
+    const user = await User.findByIdAndUpdate(req.body._id, req.body, {
+      new: true,
+    });
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }
 }
 
-module.exports = { getUsers, createUser, updateUserData };
+async function deleteUser(req, res) {
+  try {
+    const user = await User.deleteOne(req.body);
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+module.exports = { getUsers, createUser, updateUserData, deleteUser };
