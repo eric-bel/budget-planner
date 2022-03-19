@@ -15,4 +15,13 @@ async function createUser(req, res) {
   }
 }
 
-module.exports = { getUsers, createUser };
+async function updateUserData(req, res) {
+  try {
+    const user = await User.findByIdAndUpdate(req.body._id, req.body, { new: true });
+    res.status(200).json(user);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+}
+
+module.exports = { getUsers, createUser, updateUserData };
