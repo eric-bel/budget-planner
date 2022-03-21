@@ -1,7 +1,6 @@
 require("dotenv").config();
 const passport = require("passport");
 require("./middleware/authJwtMiddleware")(passport);
-const User = require("./models/User");
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -21,12 +20,14 @@ app.use(passport.initialize());
 const start = async () => {
   try {
     await mongoose.connect(process.env.DBURL);
-    app.listen(PORT, () => {
-      console.log(`Server started on http://localhost:${PORT}`);
-    });
+    // This comment is required during the tests
+    // app.listen(PORT, () => {
+    //   console.log(`Server started on http://localhost:${PORT}`);
+    // });  
   } catch (e) {
     console.log(e);
   }
 };
-
 start();
+
+module.exports = app;

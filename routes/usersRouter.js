@@ -6,11 +6,13 @@ const {
   deleteUser,
 } = require("../controllers/usersController");
 const router = new Router();
-const User = require("../models/User");
 
 router.get("/getusers", getUsers);
 router.post("/create", createUser);
 router.put("/update", updateUserData);
 router.delete("/delete", deleteUser);
+router.get('/test', (req, res) => {
+  res.status(200).json({ message: 'Hello World!' });
+});
 
 module.exports = router;
