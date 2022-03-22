@@ -29,9 +29,7 @@ describe("appTest", () => {
         const response = await supertest(app).get("/users/getusers");
 
         expect(response.status).toBe(200);
-        // expect(response.body[0]).toEqual({ id: 1, username: 'admin', password: 'admin' });
         expect(response.body[0]).toMatchObject({
-          //   id: expect.anything(), - Returns from the database: Object("62351508a4ba18eeb861074c") and the type is not defined, therefore, here is a temporary comment
           username: expect.any(String),
           password: expect.any(String),
         });

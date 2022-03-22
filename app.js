@@ -19,11 +19,7 @@ app.use(passport.initialize());
 
 const start = async () => {
   try {
-    await mongoose.connect(process.env.DBURL);
-    // This comment is required during the tests
-    // app.listen(PORT, () => {
-    //   console.log(`Server started on http://localhost:${PORT}`);
-    // });  
+    await mongoose.connect(process.env.DBURL);  
   } catch (e) {
     console.log(e);
   }
