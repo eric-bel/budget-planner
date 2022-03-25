@@ -18,7 +18,7 @@ app.use("/users", users);
 app.use(passport.initialize());
 
 app.listen(PORT, "localhost", (error) => {
-  error ? console.log(error) : console.log(`Listening port ${PORT}`);
+  error ? console.log(error) : console.log(`Listening port on ${PORT}`);
 });
 
 const start = async () => {
