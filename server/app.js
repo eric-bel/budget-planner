@@ -1,6 +1,6 @@
 require("dotenv").config();
 const passport = require("passport");
-require("./middleware/authJwtMiddleware")(passport);
+require("../middleware/authJwtMiddleware")(passport);
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
