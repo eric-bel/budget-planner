@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const Users = require("../models/users.schema");
+const dbUsers = require("../models/users.schema");
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = (id, email) => {
@@ -14,12 +14,12 @@ class AuthController {
   async registration(req, res) {
     try {
       const { username, email, password } = req.body;
-      const candidate = await Users.findOne({ email });
+      const candidate = await dbUsers.findOne({ email });
       if (candidate) {
         return res.json({ message: "This user is already registered" });
       }
       const hashPassword = bcrypt.hashSync(password, 10);
-      const user = new Users({ username, email, password: hashPassword });
+      const user = new dbUsers({ username, email, password: hashPassword });
       await user.save();
       return res.json({ message: "User successfully registered" });
     } catch (e) {
@@ -30,7 +30,7 @@ class AuthController {
   async login(req, res) {
     try {
       const { email, password } = req.body;
-      const user = await Users.findOne({ email });
+      const user = await dbUsers.findOne({ email });
       if (!user) {
         return res.json({ message: "Email error", code: 2 });
       }
