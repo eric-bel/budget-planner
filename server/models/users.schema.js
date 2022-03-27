@@ -2,11 +2,12 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    username: {
+    firstName: {
       type: String,
       required: true,
       trim: true,
     },
+    lastName: String,
     email: {
       type: String,
       required: true,
@@ -18,6 +19,12 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    ender: String,
+    country: String,
+    dateOfBirth: String,
+    age: Number,
+    role: String,
+    categories: Array,
     // role: {
     //   type: Schema.Types.ObjectId,
     //   ref: 'Role',
