@@ -6,6 +6,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const auth = require("./routes/authRouter");
 const users = require("./routes/usersRouter");
+const accountsRouter = require("./routes/accounts.router");
 
 const PORT = process.env.PORT;
 
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/auth", auth);
 app.use("/users", users);
+app.use("/accounts", accountsRouter);
 app.use(passport.initialize());
 
 app.listen(PORT, "localhost", (error) => {
