@@ -1,5 +1,6 @@
 const bcrypt = require("bcryptjs");
 const dbUsers = require("../models/users.schema");
+const dbRoles = require("../models/roles.schema");
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = (id, email) => {
@@ -19,7 +20,13 @@ class AuthController {
         return res.json({ message: "This user is already registered" });
       }
       const hashPassword = bcrypt.hashSync(password, 10);
-      const user = new dbUsers({ username, email, password: hashPassword });
+      const role = await dbRoles.findOne({ title: "USER" });
+      const user = await dbUsers.create({
+        username,
+        email,
+        password: hashPassword,
+        role: role,
+      });
       await user.save();
       return res.json({ message: "User successfully registered" });
     } catch (e) {
