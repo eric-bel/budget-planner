@@ -1,5 +1,5 @@
 const bcrypt = require("bcryptjs");
-const Users = require("../models/User");
+const Users = require("../models/users.schema");
 const jwt = require("jsonwebtoken");
 
 const generateAccessToken = (id, email) => {
