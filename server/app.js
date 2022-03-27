@@ -17,9 +17,13 @@ app.use("/auth", auth);
 app.use("/users", users);
 app.use(passport.initialize());
 
+app.listen(PORT, "localhost", (error) => {
+  error ? console.log(error) : console.log(`Listening port on ${PORT}`);
+});
+
 const start = async () => {
   try {
-    await mongoose.connect(process.env.DBURL);  
+    await mongoose.connect(process.env.DBURL);
   } catch (e) {
     console.log(e);
   }
