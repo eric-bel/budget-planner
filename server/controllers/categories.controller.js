@@ -1,5 +1,6 @@
 const dbCategories = require("../models/categories.schema");
 
+
 class categoriesController {
   async getCategories(req, res) {
     try {
