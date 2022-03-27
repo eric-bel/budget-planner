@@ -1,4 +1,4 @@
-const users = require("../controllers/usersController");
+const users = require("../controllers/users.controller");
 const app = require("../app");
 const supertest = require("supertest");
 const mongoose = require("mongoose");
