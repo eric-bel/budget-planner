@@ -3,17 +3,17 @@ const { Schema, model } = require("mongoose");
 const transactionSchema = new Schema(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+      type: "String",
       ref: "User",
       required: true,
     },
     accountId: {
-      type: Schema.Types.ObjectId,
+      type: "String",
       ref: "Account",
       required: true,
     },
     categoryId: {
-      type: Schema.Types.ObjectId,
+      type: "String",
       ref: "Category",
       required: true,
     },
