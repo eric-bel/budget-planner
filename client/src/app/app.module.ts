@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
 import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
 
 @NgModule({
-  declarations: [AppComponent, AuthComponent, AuthLayoutComponent, SiteLayoutComponent],
+  declarations: [AppComponent, AuthComponent, AuthLayoutComponent, SiteLayoutComponent, RegisterPageComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
