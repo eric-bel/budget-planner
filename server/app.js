@@ -18,6 +18,12 @@ app.use(express.json());
 app.use(cors());
 app.use("/auth", auth);
 app.use("/users", users);
+app.use("/api", (req, res, next) => {
+  res.send("Hello");
+});
+app.use("/proxitest", (req, res, next) => {
+  res.send("ProxiTest");
+})
 app.use("/accounts", accountsRouter);
 app.use("/categories", categoriesRouter);
 app.use("/transactions", transactionsRouter);
