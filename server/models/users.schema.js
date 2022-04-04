@@ -19,7 +19,7 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    ender: String,
+    gender: String,
     country: String,
     dateOfBirth: String,
     age: Number,

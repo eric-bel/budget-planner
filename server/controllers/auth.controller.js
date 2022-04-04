@@ -14,7 +14,7 @@ const generateAccessToken = (id, email) => {
 class AuthController {
   async registration(req, res) {
     try {
-      const { username, email, password } = req.body;
+      const { firstName, email, password } = req.body;
       const candidate = await dbUsers.findOne({ email });
       if (candidate) {
         return res.json({ message: "This user is already registered" });
@@ -22,12 +22,11 @@ class AuthController {
       const hashPassword = bcrypt.hashSync(password, 10);
       const role = await dbRoles.findOne({ title: "USER" });
       const user = await dbUsers.create({
-        username,
+        firstName,
         email,
         password: hashPassword,
-        role: role,
+        // role: role,
       });
-      await user.save();
       return res.json({ message: "User successfully registered" });
     } catch (e) {
       console.log(e);

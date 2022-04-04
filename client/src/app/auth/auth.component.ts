@@ -1,3 +1,4 @@
+import { AuthService } from './../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class AuthComponent implements OnInit {
   form: FormGroup | undefined;
-  constructor() {}
+  constructor(private auth: AuthService) {}
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -20,6 +21,12 @@ export class AuthComponent implements OnInit {
     });
   }
   onSubmit() {
-    // console.log(this.form);
+    if (!this.form) { return; }
+    this.auth.login(this.form.value).subscribe(() => {
+      console.log('Logged in'),
+        (error) => {
+          console.warn(error);
+        };
+    });
   }
 }
