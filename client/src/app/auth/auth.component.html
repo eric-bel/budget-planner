@@ -1,0 +1,33 @@
+<div class="registration-cssave">
+  <form formGroupName="loginForm" ngSubmit="onSubmit()">
+    <h3 class="text-center">Budgetify</h3>
+    <div class="form-group">
+    
+      <input
+        formControleNAme="email"
+        class="form-control item"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+      />
+    </div>
+    <div class="form-group">
+      <input
+        formControleNAme="password"
+        class="form-control item"
+        type="password"
+        name="Пароль"
+        minlength="6"
+        id="password"
+        placeholder="Пароль"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <button class="btn btn-primary btn-block create-account" type="submit">
+        Log in
+      </button>
+    </div>
+  </form>
+</div>

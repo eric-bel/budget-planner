@@ -1,4 +1,4 @@
-const users = require("../controllers/usersController");
+const users = require("../controllers/users.controller");
 const app = require("../app");
 const supertest = require("supertest");
 const mongoose = require("mongoose");
@@ -30,7 +30,7 @@ describe("appTest", () => {
 
         expect(response.status).toBe(200);
         expect(response.body[0]).toMatchObject({
-          username: expect.any(String),
+          firstName: expect.any(String),
           password: expect.any(String),
         });
         expect(response.header["content-type"]).toBe(

@@ -1,13 +1,13 @@
-const User = require("../models/User");
+const dbUser = require("../models/users.schema");
 
 async function getUsers(req, res) {
-  const users = await User.find({});
+  const users = await dbUser.find({});
   res.send(users);
 }
 
 async function createUser(req, res) {
   try {
-    const user = await User.create(req.body);
+    const user = await dbUser.create(req.body);
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
@@ -16,7 +16,7 @@ async function createUser(req, res) {
 
 async function updateUserData(req, res) {
   try {
-    const user = await User.findByIdAndUpdate(req.body._id, req.body, {
+    const user = await dbUser.findByIdAndUpdate(req.body._id, req.body, {
       new: true,
     });
     res.status(200).json(user);
@@ -27,7 +27,7 @@ async function updateUserData(req, res) {
 
 async function deleteUser(req, res) {
   try {
-    const user = await User.deleteOne(req.body);
+    const user = await dbUser.deleteOne(req.body);
     res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
