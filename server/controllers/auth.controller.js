@@ -25,7 +25,7 @@ class AuthController {
         firstName,
         email,
         password: hashPassword,
-        // role: role,
+        role: role,
       });
       return res.json({ message: "User successfully registered" });
     } catch (e) {

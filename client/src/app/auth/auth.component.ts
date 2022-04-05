@@ -23,7 +23,6 @@ export class AuthComponent implements OnInit {
   onSubmit() {
     if (!this.form) { return; }
     this.auth.login(this.form.value).subscribe(() => {
-      console.log('Logged in'),
         (error) => {
           console.warn(error);
         };

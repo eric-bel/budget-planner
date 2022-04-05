@@ -4,10 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 class transactionsController {
   async getTransactions(req, res) {
     try {
-      const transactions = await dbTransactions
-        .find({})
-        // .find({ userId: req.user.id })
-        // .populate(["accountId", "categoryId"]);
+      const transactions = await dbTransactions.find({});
       if (!transactions.length) {
         res.status(400).json({ message: "Could not find transactions" });
         return;
