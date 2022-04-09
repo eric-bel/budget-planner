@@ -2,7 +2,7 @@ import { SiteLayoutComponent } from './shared/layouts/site-layout/site-layout.co
 import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthLayoutComponent } from './shared/layouts/auth-layout/auth-layout.component';
+import { AuthLayoutComponent } from './shared/layouts/login-page-layout/login.page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 
 const routes: Routes = [
